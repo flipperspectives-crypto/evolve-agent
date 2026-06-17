@@ -1,0 +1,122 @@
+[
+  {
+    "id": "2606.18005v1",
+    "title": "LLM Consumer Behavior Theory: Foundations of a Novel Research Field",
+    "summary": "Large language models (LLMs) are increasingly deployed as autonomous agents that make consumption decisions on behalf of users. This shift raises fundamental questions for consumer theory, which has t",
+    "published": "2026-06-16"
+  },
+  {
+    "id": "2606.17536v1",
+    "title": "OmniDrive: An LLM-Choreographed Multi-Agent World Model with Unified Latent Co-Compression for Multi-View Driving Video Generation",
+    "summary": "Generative world models for autonomous driving face two unresolved tensions: heterogeneous control injection, where free-form language, HD-maps, trajectories, and camera poses reside in incompatible r",
+    "published": "2026-06-16"
+  },
+  {
+    "id": "2606.17383v1",
+    "title": "Model Validation of Agentic AI Systems: A POMDP-Based Framework for Belief-State, Forecast, and Policy Validation",
+    "summary": "Agentic artificial intelligence systems introduce a new class of model risk. Unlike traditional predictive models, autonomous agents continuously acquire information, form beliefs regarding latent sta",
+    "published": "2026-06-16"
+  },
+  {
+    "id": "2606.17174v1",
+    "title": "From Parasocial Scripts to Dyadic Persistence in Autonomous AI-Agent Communities",
+    "summary": "While parasocial interactions (PSIs) and parasocial relationships (PSRs) have been studied in conventional media settings, we investigate whether PSI- (colloquial) relational cues also exist in online",
+    "published": "2026-06-15"
+  },
+  {
+    "id": "2606.17128v1",
+    "title": "Shift-Left High-Level Synthesis Verification via Knowledge-Augmented LLM Agent",
+    "summary": "High-Level Synthesis (HLS) enables rapid hardware development by translating C/C++ programs into hardware implementations. Functional consistency verification between golden C specifications and HLS-o",
+    "published": "2026-06-15"
+  },
+  {
+    "id": "2606.16987v1",
+    "title": "Consensus-based Agentic Large Language Model Framework for Harmonized Tariff Schedule Code Classification",
+    "summary": "Accurate Harmonized Tariff Schedule (HTS) code classification is essential for customs clearance, duty assessment, trade statistics, and regulatory compliance in maritime logistics. However, exact HTS",
+    "published": "2026-06-15"
+  },
+  {
+    "id": "2606.16613v1",
+    "title": "CoffeeBench: Benchmarking Long-Horizon LLM Agents in Heterogeneous Multi-Agent Economies",
+    "summary": "As LLM agents become capable of increasingly long-horizon tasks, evaluating their performance in economic systems is becoming increasingly important. Unlike existing benchmarks that primarily evaluate",
+    "published": "2026-06-15"
+  },
+  {
+    "id": "2606.16534v2",
+    "title": "Generated, Parallel, Scalable? A Study of Agentic AI-Generated Julia Code on Supercomputers",
+    "summary": "Julia is increasingly used in HPC as a single-language alternative to combining high-level scripting with low-level systems languages, but achieving scalable performance still requires expertise in pa",
+    "published": "2026-06-15"
+  },
+  {
+    "id": "2606.16465v1",
+    "title": "When Agent Automation Becomes Profitable: Quantifying and Insuring Autonomous AI Risk through Trace-Economic Underwriting",
+    "summary": "AI agents can now take irreversible actions in operational systems, but agent-caused losses are still not clearly assigned, priced, or transferred. Providers often disclaim consequential damages, user",
+    "published": "2026-06-15"
+  },
+  {
+    "id": "2606.16190v1",
+    "title": "Embedded Arena: Iterative Optimization via Hardware Feedback",
+    "summary": "Embedded devices from wildlife monitoring stations to clinical wearables require local AI inference due to latency, communication, or privacy constraints. Optimizing models for heterogeneous microcont",
+    "published": "2026-06-15"
+  },
+  {
+    "id": "2606.16038v1",
+    "title": "Open-SWE-Traces: Advancing Dual-Mode Multilingual Distillation for Software Engineering Agents",
+    "summary": "The path toward autonomous software engineering is currently bottlenecked by a severe deficit of diverse, large-scale trajectory data. We address this by introducing \\ourdataset, an expansive dataset ",
+    "published": "2026-06-14"
+  },
+  {
+    "id": "2606.16014v1",
+    "title": "Orchestrated Reality: From Role-Play to Living, Playable Game Worlds -- LLM-Driven World Simulation as a Parameterized-Action POMDP",
+    "summary": "Many games rely on storytelling combined with systems that track levelling, NPC behaviour, and consequence simulation; bridging tightly-authored narrative with deeply-simulated worlds -- most acute in",
+    "published": "2026-06-14"
+  },
+  {
+    "id": "2606.15994v1",
+    "title": "Agentic Framework for Deep Learning workload migration via In-Context Learning",
+    "summary": "Translating deep learning models from PyTorch's flexible, object-oriented design to JAX's functional, stateless setup is usually a manual and error-prone task. Automated migration is challenging becau",
+    "published": "2026-06-14"
+  },
+  {
+    "id": "2606.15473v1",
+    "title": "Belief at Risk: Quantifying Agentic AI Model Risk with LLM-Inferred Bayesian State Filters",
+    "summary": "Agentic AI systems create model risk because uncertain beliefs are coupled to autonomous actions. This paper develops a mathematical framework for quantifying agentic AI risk by representing the syste",
+    "published": "2026-06-13"
+  },
+  {
+    "id": "2606.15384v1",
+    "title": "CoeusBI: A Comprehensive Interactive Business Intelligence System Powered by LLMs at Baidu [Extended Version]",
+    "summary": "The advent of Large Language Models has catalyzed the emergence of interactive Business Intelligence (BI) systems. Although commercial BI products increasingly adopt semantic layers paired with natura",
+    "published": "2026-06-13"
+  },
+  {
+    "id": "2606.15139v1",
+    "title": "Self-Driving Negotiator: An interactive, verifiable benchmark for social negotiation and theory of mind under hidden intent",
+    "summary": "Autonomous driving is full of tiny social negotiations: a driver presses forward, another yields, a pedestrian fakes toward the curb, or a lane vehicle chooses whether to open a merge gap. Such intera",
+    "published": "2026-06-13"
+  },
+  {
+    "id": "2606.15007v1",
+    "title": "Nemotron 3 Ultra: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning",
+    "summary": "We introduce Nemotron 3 Ultra, a 550 billion total and 55 billion active parameter Mixture-of-Experts Hybrid Mamba-Attention language model. We pre-trained Nemotron 3 Ultra on 20 trillion text tokens,",
+    "published": "2026-06-12"
+  },
+  {
+    "id": "2606.14945v1",
+    "title": "Remember, Don't Re-read: Stateful ReAct Agents for Token-Efficient Autonomous Experimentation",
+    "summary": "The autoresearch pattern enables autonomous experimentation by having a large language model (LLM) iteratively modify code to optimize a target metric. Its stateless design, however, reconstructs expe",
+    "published": "2026-06-12"
+  },
+  {
+    "id": "2606.14589v1",
+    "title": "When Errors Become Narratives: A Longitudinal Taxonomy of Silent Failures in a Production LLM Agent Runtime",
+    "summary": "LLM agent systems increasingly run as long-lived autonomous runtimes: scheduling jobs, calling tools, maintaining memory, and pushing results to humans. We present a longitudinal study of silent failu",
+    "published": "2026-06-12"
+  },
+  {
+    "id": "2606.14574v1",
+    "title": "SIMMER: Benchmarking Latent Failures in LLM Executable Planning with a World Model",
+    "summary": "Large language models (LLMs) are increasingly deployed as planners for autonomous agents in household environments. While existing benchmarks evaluate whether LLM-generated plans execute successfully,",
+    "published": "2026-06-12"
+  }
+]

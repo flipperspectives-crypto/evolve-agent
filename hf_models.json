@@ -1,0 +1,23 @@
+[
+  {
+    "id": "aiimetta/aiimetta-autonomous-agent",
+    "downloads": 0,
+    "likes": 1,
+    "pipeline": "?",
+    "author": "?"
+  },
+  {
+    "id": "aliRafik/GPT-OSS-20B-Agentic-SwissKnife-Tool-calling-full-model",
+    "downloads": 4,
+    "likes": 0,
+    "pipeline": "text-generation",
+    "author": "?"
+  },
+  {
+    "id": "aliRafik/GPT-OSS-20B-Agentic-SwissKnife-Tool-calling",
+    "downloads": 0,
+    "likes": 0,
+    "pipeline": "?",
+    "author": "?"
+  }
+]
