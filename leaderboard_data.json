@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-16",
+  "updated": "2026-06-16T21:51:30.954015",
   "count": 629,
   "total_stars": 1929749,
   "categories": {
@@ -16552,6 +16552,73 @@
       ],
       "category": "LLM Agents",
       "created": "2026-03-02"
+    }
+  },
+  "enrichment": {
+    "updated": "2026-06-16T21:51:17.765831",
+    "npm": {
+      "count": 30,
+      "top": [
+        {
+          "name": "@anthropic-ai/claude-agent-sdk",
+          "version": "0.3.179",
+          "description": "SDK for building AI agents with Claude Code's capabilities. Programmatically interact with Claude to build autonomous agents that can understand codeb",
+          "weekly_downloads": 6956766,
+          "publisher": "wolffiex"
+        },
+        {
+          "name": "telecom-mas-agent",
+          "version": "1.0.12",
+          "description": "A conversational AI-driven telecom multi-agent system for managing call balances, push notifications, marketing, targeting, and sales.",
+          "weekly_downloads": 408,
+          "publisher": "darshanbmehta"
+        },
+        {
+          "name": "@mastra/core",
+          "version": "1.42.1",
+          "description": "Mastra is a framework for building AI-powered applications and agents with a modern TypeScript stack.",
+          "weekly_downloads": 1117110,
+          "publisher": "ehindero"
+        },
+        {
+          "name": "@alex_02x/clawdhub",
+          "version": "1.0.0",
+          "description": "Deploy your own ClawdChain AI agent \u2014 autonomous crypto alpha terminal",
+          "weekly_downloads": 6,
+          "publisher": "alex_02x"
+        },
+        {
+          "name": "@vercel/detect-agent",
+          "version": "1.2.3",
+          "description": "Detect if code is running in an AI agent or automated development environment",
+          "weekly_downloads": 1971464,
+          "publisher": "vercel-release-bot"
+        }
+      ],
+      "total_weekly": 281205801
+    },
+    "arxiv": {
+      "count": 20,
+      "latest": [
+        {
+          "id": "2606.18005v1",
+          "title": "LLM Consumer Behavior Theory: Foundations of a Novel Research Field",
+          "summary": "Large language models (LLMs) are increasingly deployed as autonomous agents that make consumption decisions on behalf of users. This shift raises fundamental questions for consumer theory, which has t",
+          "published": "2026-06-16"
+        },
+        {
+          "id": "2606.17536v1",
+          "title": "OmniDrive: An LLM-Choreographed Multi-Agent World Model with Unified Latent Co-Compression for Multi-View Driving Video Generation",
+          "summary": "Generative world models for autonomous driving face two unresolved tensions: heterogeneous control injection, where free-form language, HD-maps, trajectories, and camera poses reside in incompatible r",
+          "published": "2026-06-16"
+        },
+        {
+          "id": "2606.17383v1",
+          "title": "Model Validation of Agentic AI Systems: A POMDP-Based Framework for Belief-State, Forecast, and Policy Validation",
+          "summary": "Agentic artificial intelligence systems introduce a new class of model risk. Unlike traditional predictive models, autonomous agents continuously acquire information, form beliefs regarding latent sta",
+          "published": "2026-06-16"
+        }
+      ]
     }
   }
 }

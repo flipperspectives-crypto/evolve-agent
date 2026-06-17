@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generation": 5,
+  "generation": 6,
   "decisions": [
     {
       "timestamp": "2026-06-16T21:32:35.198422",
@@ -42,10 +42,30 @@
       "action": "Extend EVOLVE with self-modification: mutation engine + sandbox + auto-PR",
       "result": "self_modified",
       "injected": "mutation_engine"
+    },
+    {
+      "timestamp": "2026-06-16T21:51:17.737792",
+      "generation": 5,
+      "choice": "leaderboard_enrich",
+      "score": 7.75,
+      "action": "Add npm download counts, arXiv paper links, PyPI versions to leaderboard",
+      "result": "enriched",
+      "stats": {
+        "repos": 629,
+        "npm_packages": 30,
+        "papers": 20
+      }
     }
   ],
   "skills_learned": [],
   "mutations_applied": 0,
-  "repos_shipped": 2,
-  "started": "2026-06-16T21:32:31.693477"
+  "repos_shipped": 3,
+  "started": "2026-06-16T21:32:31.693477",
+  "profit_events": [
+    {
+      "type": "leaderboard_enrichment",
+      "timestamp": "2026-06-16T21:51:17.775460",
+      "value": "ecosystem_authority"
+    }
+  ]
 }
