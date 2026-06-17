@@ -1,0 +1,51 @@
+{
+  "version": "0.1.0",
+  "generation": 5,
+  "decisions": [
+    {
+      "timestamp": "2026-06-16T21:32:35.198422",
+      "generation": 1,
+      "choice": "mobile_agent_tools",
+      "score": 6.1,
+      "action": "Package Termux-optimized agent scripts as installable tools",
+      "result": "not_implemented"
+    },
+    {
+      "timestamp": "2026-06-16T21:33:02.140713",
+      "generation": 2,
+      "choice": "multi_model_synthesis",
+      "score": 8.2,
+      "action": "Package judge.py as pip-installable CLI + OpenRouter API support",
+      "result": "built",
+      "files": [
+        "setup.py",
+        "judge.py"
+      ]
+    },
+    {
+      "timestamp": "2026-06-16T21:33:08.635230",
+      "generation": 3,
+      "choice": "multi_model_synthesis",
+      "score": 8.2,
+      "action": "Package judge.py as pip-installable CLI + OpenRouter API support",
+      "result": "built",
+      "files": [
+        "setup.py",
+        "judge.py"
+      ]
+    },
+    {
+      "timestamp": "2026-06-16T21:33:41.950697",
+      "generation": 4,
+      "choice": "self_evolving_agent",
+      "score": 7.65,
+      "action": "Extend EVOLVE with self-modification: mutation engine + sandbox + auto-PR",
+      "result": "self_modified",
+      "injected": "mutation_engine"
+    }
+  ],
+  "skills_learned": [],
+  "mutations_applied": 0,
+  "repos_shipped": 2,
+  "started": "2026-06-16T21:32:31.693477"
+}
