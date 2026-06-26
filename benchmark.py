@@ -288,17 +288,21 @@ def call_gemini(model_name, system_prompt, user_prompt, api_key):
 
 def call_deepseek(system_prompt, user_prompt, api_key=None):
     """Call DeepSeek API."""
-    key = api_key or os.environ.get("DEEPSEEK_API_KEY", "")
+    key = api_key or ""
     if not key:
-        config_path = HOME / ".hermes" / "config.yaml"
-        try:
-            with open(config_path) as f:
-                for line in f:
-                    m = re.match(r'\s*api_key_env:\s*(sk-\S{30,})', line)
-                    if m:
-                        key = m.group(1)
-                        break
-        except: pass
+        key = os.environ.get("DEEPSEEK_API_KEY", "")
+    # Always try config key as fallback (env may have stale key)
+    config_path = HOME / ".hermes" / "config.yaml"
+    try:
+        with open(config_path) as f:
+            for line in f:
+                m = re.match(r'\s*api_key_env:\s*(sk-\S{30,})', line)
+                if m:
+                    config_key = m.group(1)
+                    if not key or key != config_key:
+                        key = config_key  # prefer config key
+                    break
+    except: pass
     
     if not key:
         return None, "No DeepSeek API key found"

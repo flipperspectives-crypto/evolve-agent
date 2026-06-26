@@ -1,0 +1,183 @@
+A) ARCHITECTURE
+
+The EVOLVE system uses a 6-component architecture connected via a message bus:
+
+```
+OBSERVER (scrapes GitHub, npm, PyPI)
+    │
+    ▼
+IMAGINER (identifies gaps, generates ideas)
+    │
+    ▼
+BUILDER (implements solutions)
+    │
+    ▼
+VERIFIER (sandbox tests, adversarial checks)
+    │
+    ▼
+DEPLOYER (ships to production, canary deploys)
+    │
+    ▼
+JUDGE (multi-model synthesis, scores everything)
+```
+
+Components communicate via Redis pub/sub with JSON messages. Each is an independent process.
+
+Failure modes:
+- Observer goes down: stale data, no new ideas. Handled by watchdog restart + cached data fallback.
+- Builder produces broken code: caught by Verifier's sandbox tests, automatically rolled back.
+- Judge hallucinates scores: cross-validated by tracking historical accuracy vs human review.
+- Redis goes down: all components fall back to local SQLite queues with exponential backoff reconnect.
+
+Communication patterns:
+- Observer → Imaginer: push (webhook-style), batch every 15min
+- Imaginer → Builder: pull (Builder polls for new tasks)
+- Builder → Verifier: push (immediate on build complete)
+- Verifier → Deployer: push with pass/fail flag
+- All → Judge: push for scoring, Judge exposes REST API for dashboard
+
+B) SELF-MODIFICATION
+
+Safe self-modification uses a 3-stage sandbox:
+
+Stage 1: Static Analysis
+- AST parsing to verify only allowed code patterns
+- Blocklist: no os.system, subprocess, socket, eval, exec, __import__
+- Allowlist: only stdlib + approved libraries
+- Maximum diff size: 200 lines per self-modification
+
+Stage 2: Sandbox Execution
+- Run modified code in Docker container with no network, 256MB RAM limit, 30s timeout
+- Run existing test suite (must pass)
+- Run 10 generated adversarial tests
+
+Stage 3: Canary Deploy
+- Deploy to 5% of pipeline runs, monitor for 1 hour
+- Error rate must stay within baseline
+- If passes: promote to 100%. If fails: automatic rollback via git revert
+
+Rollback mechanism:
+- Every self-modification creates a git branch
+- Old code kept in /evolve/versions/ with timestamp
+- After 3 consecutive failures on same module, auto-locks (human required)
+
+Verification code sketch:
+
+```python
+def verify_change(diff_path):
+    # 1. Static analysis
+    issues = run_pylint(diff_path, max_issues=0)
+    if issues: return False, issues
+    
+    # 2. Sandbox tests
+    with DockerSandbox() as sandbox:
+        result = sandbox.run_tests(timeout=30)
+        if result.failures > 0: return False, result
+    
+    # 3. Adversarial tests
+    adv = generate_and_run_adversarial(diff_path, count=10)
+    if any(r.crashed for r in adv): return False
+    return True
+```
+
+C) RATE LIMITING
+
+Heartbeat-governed rate limiter with token bucket algorithm:
+
+```python
+class RateLimitTracker:
+    def __init__(self):
+        self.services = {
+            'github': TokenBucket(capacity=5000, refill_rate=1.4),
+            'deepseek': TokenBucket(capacity=10, refill_rate=0.0028),
+            'npm': TokenBucket(capacity=100, refill_rate=0.028),
+            'pypi': TokenBucket(capacity=100, refill_rate=0.028),
+        }
+        self.pending = defaultdict(deque)  # service -> [requests]
+        self.window_counts = defaultdict(int)
+        self.circuit_breakers = {}  # service -> cooldown_until
+```
+
+Burst vs sustained:
+- Burst: up to 20% of capacity available instantly (GitHub: 1000 req burst)
+- Sustained: refill at 1.4 req/sec for GitHub API
+- If pending queue > 100: switch to batch mode (consolidate similar requests)
+
+Preventing bans:
+- Respect Retry-After headers from API responses
+- If 429 received: pause all requests to that service
+- If 403 received: escalate to circuit breaker (30min cooldown)
+- Track X-RateLimit-Remaining, X-RateLimit-Reset headers
+- Pre-emptively slow down when remaining < 10% of budget
+
+D) JUDGE SYNTHESIS
+
+Judge system prompt:
+
+"You are the EVOLVE Synthesis Judge. Your role is to evaluate outputs from 3 panelist models (Researcher, Engineer, Creative) and produce a single coherent, actionable answer.
+
+INPUT: 3 labeled model outputs.
+
+YOUR TASK:
+1. CONSENSUS: Identify findings all 3 agree on. Mark as HIGH CONFIDENCE.
+2. CONTRADICTIONS: When models disagree, apply resolution rules:
+   - Researcher vs Engineer on technical detail: trust Engineer
+   - Researcher vs Creative on speculative insight: flag as 'needs investigation'
+   - Engineer vs Creative on implementation: trust Engineer, note Creative's idea
+   - All 3 disagree: present all views, mark LOW CONFIDENCE
+3. CONFIDENCE: Assign High/Medium/Low to each finding
+4. UNIQUE INSIGHTS: Highlight what only one model caught
+5. BLIND SPOTS: Based on what ALL missed, suggest next investigation
+6. ACTION PLAN: Prioritized list with justification
+
+OUTPUT FORMAT:
+{
+  consensus: [...],
+  contradictions: [{finding, models, resolution, confidence}],
+  unique_insights: [{finding, model, importance}],
+  blind_spots: [...],
+  action_plan: [{priority, action, justification}]
+}
+
+Be ruthless about contradictions. Do not smooth over disagreements."
+
+E) PROFITABILITY
+
+Real value artifacts:
+
+1. LEADERBOARD AS AUTHORITY (free, builds brand)
+   - Live leaderboard ranking all autonomous agent frameworks
+   - Becomes the "go-to" source for agent infrastructure comparison
+   - Ad revenue from 10K+ monthly visitors
+   - Sell "verified" badges to frameworks that pass EVOLVE's benchmark
+
+2. BENCHMARK AS SERVICE ($500-2000/mo per customer)
+   - Companies pay to benchmark their agents against EVOLVE's test suite
+   - Detailed reports: where does your agent rank vs competitors
+   - CI integration: run benchmarks on every PR
+
+3. SELF-EVOLVING PIPELINE AS SAAS ($5K-20K/mo)
+   - Managed autonomous agent pipeline for enterprises
+   - Customer provides GitHub org access, EVOLVE scouts and builds tools
+   - Full observe-imagine-build-verify-deploy loop as a service
+
+4. OPEN-SOURCE AUTHORITY
+   - EVOLVE becomes the reference implementation for self-evolving agents
+   - Conference talks, papers, blog posts build thought leadership
+   - GitHub stars drive social proof and consulting ($500/hr)
+
+Path to adoption:
+   Month 1-2: Launch leaderboard, get on HN frontpage
+   Month 3-4: Release benchmark, partner with 3 agent framework teams
+   Month 5-6: Case study proving EVOLVE's value
+   Month 7-12: Enterprise SAAS with 3 design partners
+
+SUMMARY
+
+EVOLVE is a 6-component autonomous agent pipeline that observes the ecosystem, identifies gaps, builds solutions, verifies them in sandboxes, deploys via canary, and scores everything through a multi-model synthesis judge. Self-modification is gated by a 3-stage safety system. Rate limiting uses token buckets with circuit breakers. Revenue comes from leaderboard authority, benchmark services, and managed SAAS pipelines.
+
+References:
+- Token bucket algorithm: https://en.wikipedia.org/wiki/Token_bucket
+- Redis pub/sub: https://redis.io/topics/pubsub
+- Docker security: https://docs.docker.com/engine/security
+- GitHub rate limiting: https://docs.github.com/en/rest/using-the-rest-api/rate-limits
